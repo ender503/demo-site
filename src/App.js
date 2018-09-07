@@ -1,9 +1,12 @@
 import React from 'react';
+import { Container } from 'reactstrap';
 import {
   BrowserRouter as Router,
   Route,
   Link
 } from 'react-router-dom'
+
+import SiteNavbar from "./components/SiteNavbar";
 
 import HomePage from './containers/HomePage';
 import AdminPage from './containers/AdminPage';
@@ -12,15 +15,11 @@ class App extends React.Component {
     return (
       <Router>
         <div>
-          <ul>
-            <li><Link to="/">Home</Link></li>
-            <li><Link to="/admin">Manager</Link></li>
-          </ul>
-
-          <hr/>
-
-          <Route exact path="/" component={HomePage}/>
-          <Route path="/admin" component={AdminPage}/>
+          <SiteNavbar/>
+          <Container>
+            <Route exact path="/" component={HomePage}/>
+            <Route path="/admin" component={AdminPage}/>
+          </Container>
         </div>
       </Router>
     );
