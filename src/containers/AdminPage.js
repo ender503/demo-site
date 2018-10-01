@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 
 class AdminPage extends React.Component {
   render() {
@@ -6,7 +6,7 @@ class AdminPage extends React.Component {
       <div>
         <p>AdminPage</p>
       </div>
-    )
+    );
   }
 }
 
