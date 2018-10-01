@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 import {
   Collapse,
   DropdownItem,
@@ -11,9 +11,9 @@ import {
   NavbarBrand,
   NavbarToggler,
   UncontrolledDropdown
-} from "reactstrap";
+} from 'reactstrap';
 
-import { Link } from "react-router-dom";
+import { Link } from 'react-router-dom';
 
 class SiteNavbar extends React.Component {
   constructor(props) {
