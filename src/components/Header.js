@@ -14,7 +14,7 @@ import {
 
 import { Link } from 'react-router-dom';
 
-class SiteNavbar extends React.Component {
+class Header extends React.Component {
   constructor(props) {
     super(props);
     this.toggleNavbar = this.toggleNavbar.bind(this);
@@ -66,4 +66,4 @@ class SiteNavbar extends React.Component {
   }
 }
 
-export default SiteNavbar;
+export default Header;
