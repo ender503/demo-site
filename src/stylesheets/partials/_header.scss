@@ -1,0 +1,32 @@
+.header {
+  padding-top: 20px;
+  margin: auto;
+}
+
+.nav-wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.main-logo {
+  color: black;
+  font-size: 24px;
+  font-weight: 200;
+  text-decoration: none;
+}
+
+.nav-menu {
+  display: flex;
+  padding-top: 10px;
+  flex-grow: 1;
+  max-width: 190px;
+  justify-content: space-between;
+}
+
+.nav-menu a {
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  text-decoration: none;
+}
