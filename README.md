@@ -4,20 +4,20 @@ This demo site is designed to illustrate the course site issue an claim to the p
 
 ## Getting Started
 
-1.  Clone the repository.
+Clone the repository.
 
 ```shell
-$ git@github.com:TangleID/demo-site.git
+$ git clone git@github.com:TangleID/demo-site.git
 ```
 
-2.  Install the package dependencies
+Install the package dependencies.
 
 ```shell
 $ cd demo-site
 $ yarn
 ```
 
-3.  Launch the demo site
+Launch the app.
 
 ```shell
 $ yarn start
