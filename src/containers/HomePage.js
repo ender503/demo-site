@@ -2,6 +2,7 @@ import React from 'react';
 
 import ConnectPage from '../pages/ConnectPage';
 import IssuerPage from '../pages/IssuerPage';
+import ClaimPage from '../pages/ClaimPage';
 
 import tangleidConnect from '../utilities/connectSetup';
 import issueClaim from '../utilities/issueClaim';
@@ -73,6 +74,13 @@ class HomePage extends React.Component {
               credentials={this.state.credentials}
               isSubmiting={this.state.isSubmiting}
               submit={this.onClaimSubmit}
+            />
+          ) : null}
+
+          {this.state.credentials && this.state.claim ? (
+            <ClaimPage
+              claim={this.state.claim}
+              transaction={this.state.transaction}
             />
           ) : null}
         </div>
