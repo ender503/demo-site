@@ -2,6 +2,7 @@
   "name": "tangleid-demo-site",
   "version": "0.1.0",
   "private": true,
+  "license": "MIT",
   "dependencies": {
     "@tangleid/connect": "^1.0.0",
     "bootstrap": "^4.1.3",
