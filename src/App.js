@@ -4,7 +4,7 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Header from './components/Header';
 
-import HomePage from './containers/HomePage';
+import HomePage from './pages/HomePage';
 class App extends React.Component {
   render() {
     return (
