@@ -7,6 +7,11 @@ import store from './utilities/store';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 
+import Users from './pages/Users';
+import Activity from './pages/Activity';
+
+import ActivityModal from './components/ActivityModal';
+
 const App = () => {
   return (
     <Provider store={store}>
@@ -15,7 +20,11 @@ const App = () => {
           <Header />
           <Container>
             <Route exact path="/" component={HomePage} />
+            <Route exact path="/users" component={Users} />
+            <Route path="/activity" component={Activity} />
           </Container>
+
+          <Route exact path="/activity/new" component={ActivityModal} />
         </div>
       </Router>
     </Provider>
