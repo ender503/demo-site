@@ -8,7 +8,7 @@ const Header = () => {
       <header className="header">
         <div className="container">
           <Link className="main-logo" to="/">
-            TangleID Demo | Tangle
+            I-PATH 校園學習衛星站
           </Link>
         </div>
       </header>
