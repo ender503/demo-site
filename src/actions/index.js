@@ -1,16 +1,6 @@
-import {
-  UPDATE_IDENTITY,
-  UPDATE_CLAIM,
-  UPDATE_TRANSACTION,
-  SET_SUBMITTING
-} from './types';
+import { UPDATE_CLAIM, UPDATE_TRANSACTION, SET_SUBMITTING } from './types';
 
-export const updateIdentity = credentials => {
-  return {
-    type: UPDATE_IDENTITY,
-    credentials
-  };
-};
+export { connectIdentity } from './connectIdentity';
 
 export const updateClaim = claim => {
   return {

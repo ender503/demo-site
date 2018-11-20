@@ -15,7 +15,8 @@
     "react-scripts": "2.0.4",
     "reactstrap": "^6.4.0",
     "redux": "^4.0.1",
-    "redux-logger": "^3.0.6"
+    "redux-logger": "^3.0.6",
+    "redux-thunk": "^2.3.0"
   },
   "devDependencies": {
     "husky": "^1.0.1",

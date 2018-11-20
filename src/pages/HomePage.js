@@ -1,8 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import {
+  connectIdentity,
   updateClaim,
-  updateIdentity,
   updateTransaction,
   setSubmitting
 } from '../actions';
@@ -11,27 +11,13 @@ import ConnectPage from '../pages/ConnectPage';
 import IssuerPage from '../pages/IssuerPage';
 import ClaimPage from '../pages/ClaimPage';
 
-import tangleidConnect from '../utilities/connectSetup';
 import issueClaim from '../utilities/issueClaim';
 
 class HomePage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onConnect = this.onConnect.bind(this);
     this.onClaimSubmit = this.onClaimSubmit.bind(this);
-  }
-
-  onConnect() {
-    tangleidConnect
-      .requestCredentials()
-      .then(credentials => {
-        console.log('Credentials', credentials);
-        this.props.updateIdentity(credentials);
-      })
-      .catch(error => {
-        console.log(error);
-      });
   }
 
   onClaimSubmit(formData) {
@@ -59,7 +45,7 @@ class HomePage extends React.Component {
       <div className="main-container">
         <div className="text-center mt-4">
           {!this.props.credentials ? (
-            <ConnectPage connect={this.onConnect} />
+            <ConnectPage connect={this.props.onConnect} />
           ) : null}
 
           {!this.props.claim && this.props.credentials ? (
@@ -86,8 +72,8 @@ const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => {
   return {
-    updateIdentity: credentials => {
-      dispatch(updateIdentity(credentials));
+    onConnect: () => {
+      dispatch(connectIdentity());
     },
     updateClaim: claim => {
       dispatch(updateClaim(claim));

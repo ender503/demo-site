@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 import {
-  UPDATE_IDENTITY,
+  CONNECT_IDENTITY_SUCCESS,
   UPDATE_CLAIM,
   UPDATE_TRANSACTION,
   SET_SUBMITTING
@@ -8,10 +8,10 @@ import {
 
 export const credentials = (state = null, action) => {
   switch (action.type) {
-    case UPDATE_IDENTITY:
+    case CONNECT_IDENTITY_SUCCESS:
       return {
         ...state,
-        ...action.credentials
+        ...action.payload.credentials
       };
     default:
       return state;
