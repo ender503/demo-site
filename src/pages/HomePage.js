@@ -1,4 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import {
+  updateClaim,
+  updateIdentity,
+  updateTransaction,
+  setSubmitting
+} from '../actions';
 
 import ConnectPage from '../pages/ConnectPage';
 import IssuerPage from '../pages/IssuerPage';
@@ -11,13 +18,6 @@ class HomePage extends React.Component {
   constructor(props) {
     super(props);
 
-    this.state = {
-      credentials: null,
-      claim: null,
-      transaction: null,
-      isSubmiting: false
-    };
-
     this.onConnect = this.onConnect.bind(this);
     this.onClaimSubmit = this.onClaimSubmit.bind(this);
   }
@@ -27,7 +27,7 @@ class HomePage extends React.Component {
       .requestCredentials()
       .then(credentials => {
         console.log('Credentials', credentials);
-        this.setState({ credentials });
+        this.props.updateIdentity(credentials);
       })
       .catch(error => {
         console.log(error);
@@ -35,28 +35,21 @@ class HomePage extends React.Component {
   }
 
   onClaimSubmit(formData) {
-    this.setState({ isSubmiting: true });
+    this.props.setSubmitting(true);
     const claimData = {
       ...formData,
-      userDid: this.state.credentials.did,
-      userToken: this.state.credentials.pushToken
+      userDid: this.props.credentials.did,
+      userToken: this.props.credentials.pushToken
     };
 
     issueClaim(claimData)
       .then(response => {
-        let txnHash = null;
-        if (response.transaction.length > 0) {
-          txnHash = response.transaction[0].hash;
-        }
-
-        this.setState({
-          isSubmiting: false,
-          claim: response.claim,
-          transaction: txnHash
-        });
+        this.props.setSubmitting(false);
+        this.props.updateClaim(response.claim);
+        this.props.updateTransaction(response.transaction);
       })
       .catch(error => {
-        this.setState({ isSubmiting: false });
+        this.props.setSubmitting(false);
         console.error(error);
       });
   }
@@ -65,22 +58,22 @@ class HomePage extends React.Component {
     return (
       <div className="main-container">
         <div className="text-center mt-4">
-          {!this.state.credentials ? (
+          {!this.props.credentials ? (
             <ConnectPage connect={this.onConnect} />
           ) : null}
 
-          {!this.state.claim && this.state.credentials ? (
+          {!this.props.claim && this.props.credentials ? (
             <IssuerPage
-              credentials={this.state.credentials}
-              isSubmiting={this.state.isSubmiting}
+              credentials={this.props.credentials}
+              isSubmitting={this.props.isSubmitting}
               submit={this.onClaimSubmit}
             />
           ) : null}
 
-          {this.state.credentials && this.state.claim ? (
+          {this.props.credentials && this.props.claim ? (
             <ClaimPage
-              claim={this.state.claim}
-              transaction={this.state.transaction}
+              claim={this.props.claim}
+              transaction={this.props.transaction}
             />
           ) : null}
         </div>
@@ -89,4 +82,26 @@ class HomePage extends React.Component {
   }
 }
 
-export default HomePage;
+const mapStateToProps = state => state;
+
+const mapDispatchToProps = dispatch => {
+  return {
+    updateIdentity: credentials => {
+      dispatch(updateIdentity(credentials));
+    },
+    updateClaim: claim => {
+      dispatch(updateClaim(claim));
+    },
+    updateTransaction: transaction => {
+      dispatch(updateTransaction(transaction));
+    },
+    setSubmitting: submitting => {
+      dispatch(setSubmitting(submitting));
+    }
+  };
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(HomePage);

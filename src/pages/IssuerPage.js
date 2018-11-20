@@ -37,7 +37,7 @@ export default class IssuerPage extends React.Component {
         <ClaimModal
           userName={this.props.credentials.name}
           isOpen={this.state.isOpen}
-          isRoading={this.props.isSubmiting}
+          isRoading={this.props.isSubmitting}
           submit={this.props.submit}
           toggle={this.onModalToggle}
         />
