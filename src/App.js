@@ -7,21 +7,19 @@ import store from './utilities/store';
 import Header from './components/Header';
 import HomePage from './pages/HomePage';
 
-class App extends React.Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <Router>
-          <div>
-            <Header />
-            <Container>
-              <Route exact path="/" component={HomePage} />
-            </Container>
-          </div>
-        </Router>
-      </Provider>
-    );
-  }
-}
+const App = () => {
+  return (
+    <Provider store={store}>
+      <Router>
+        <div>
+          <Header />
+          <Container>
+            <Route exact path="/" component={HomePage} />
+          </Container>
+        </div>
+      </Router>
+    </Provider>
+  );
+};
 
 export default App;

@@ -3,19 +3,17 @@ import { connect } from 'react-redux';
 
 import ClaimRequestButton from '../components/ClaimRequestButton';
 
-class ClaimRequestPage extends React.Component {
-  render() {
-    return (
-      <div>
-        <h3 className="section-title">Issue Certification</h3>
-        <p>Hello {this.props.credentials.name}, welcome to this course. </p>
-        <div className="section-button">
-          <ClaimRequestButton />
-        </div>
+const ClaimRequestPage = props => {
+  return (
+    <div>
+      <h3 className="section-title">Issue Certification</h3>
+      <p>Hello {props.credentials.name}, welcome to this course. </p>
+      <div className="section-button">
+        <ClaimRequestButton />
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
 const mapStateToProps = state => state;
 
