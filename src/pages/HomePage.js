@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { connectIdentity, requestClaim } from '../actions';
+import { requestClaim } from '../actions';
 
 import ConnectPage from '../pages/ConnectPage';
 import IssuerPage from '../pages/IssuerPage';
@@ -27,9 +27,7 @@ class HomePage extends React.Component {
     return (
       <div className="main-container">
         <div className="text-center mt-4">
-          {!this.props.credentials ? (
-            <ConnectPage connect={this.props.onConnect} />
-          ) : null}
+          {!this.props.credentials ? <ConnectPage /> : null}
 
           {!this.props.claim && this.props.credentials ? (
             <IssuerPage
@@ -55,9 +53,6 @@ const mapStateToProps = state => state;
 
 const mapDispatchToProps = dispatch => {
   return {
-    onConnect: () => {
-      dispatch(connectIdentity());
-    },
     requestClaim: claimData => {
       dispatch(requestClaim(claimData));
     }

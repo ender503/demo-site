@@ -1,5 +1,5 @@
 import React from 'react';
-import { Button } from 'reactstrap';
+import ConnectButton from '../components/ConnectButton';
 
 export default class ConnectPage extends React.Component {
   render() {
@@ -8,13 +8,7 @@ export default class ConnectPage extends React.Component {
         <h3 className="section-title">TangleID Demo</h3>
         <p>Identity and transaction infrastructure for IOTA</p>
         <div className="section-button">
-          <Button
-            color="info"
-            onClick={this.props.connect}
-            size="lg font-weight-light"
-          >
-            Connect with TangleID
-          </Button>
+          <ConnectButton />
         </div>
       </div>
     );
