@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import ClaimRequestButton from '../components/ClaimRequestButton';
 
-class IssuerPage extends React.Component {
+class ClaimRequestPage extends React.Component {
   render() {
     return (
       <div>
@@ -19,4 +19,4 @@ class IssuerPage extends React.Component {
 
 const mapStateToProps = state => state;
 
-export default connect(mapStateToProps)(IssuerPage);
+export default connect(mapStateToProps)(ClaimRequestPage);

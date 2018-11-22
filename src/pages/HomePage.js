@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import ConnectPage from '../pages/ConnectPage';
-import IssuerPage from '../pages/IssuerPage';
+import ClaimRequestPage from '../pages/ClaimRequestPage';
 import ClaimPage from '../pages/ClaimPage';
 
 class HomePage extends React.Component {
@@ -12,7 +12,9 @@ class HomePage extends React.Component {
         <div className="text-center mt-4">
           {!this.props.credentials ? <ConnectPage /> : null}
 
-          {!this.props.claim && this.props.credentials ? <IssuerPage /> : null}
+          {!this.props.claim && this.props.credentials ? (
+            <ClaimRequestPage />
+          ) : null}
 
           {this.props.credentials && this.props.claim ? (
             <ClaimPage
